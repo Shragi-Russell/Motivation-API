@@ -18,3 +18,8 @@ async def get_quote():
     # Select a random quote from the list
     quote = random.choice(quotes)
     return {"quote": quote}
+
+# Defining endpoint for all quotes
+@app.get("/quotes")
+async def get_all_quotes():
+    return {"quotes": quotes}
