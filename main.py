@@ -32,3 +32,11 @@ async def add_quote(new_quote: Quote):
         return {"message": "Quote already exists."}
     quotes.append(new_quote.text)
     return {"message": "Quote added successfully!"}
+
+# Defining endpoint to delete a quote
+@app.delete("/quote")
+async def delete_quote(quote: Quote):
+    if quote.text in quotes:
+        quotes.remove(quote.text)
+        return {"message": "Quote deleted successfully!"}
+    return {"message": "Quote not found."}
