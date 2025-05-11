@@ -11,3 +11,10 @@ app = FastAPI()
 @app.get("/")
 async def read_root():
     return {"message": "Welcome to the Motivational Quotes API!"}
+
+ Defining endpoint for random quote
+@app.get("/quote")
+async def get_quote():
+    # Select a random quote from the list
+    quote = random.choice(quotes)
+    return {"quote": quote}
