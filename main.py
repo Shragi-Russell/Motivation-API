@@ -40,3 +40,12 @@ async def delete_quote(quote: Quote):
         quotes.remove(quote.text)
         return {"message": "Quote deleted successfully!"}
     return {"message": "Quote not found."}
+
+ Defining endpoint to update a quote
+@app.put("/quote")
+async def update_quote(old_quote: Quote, new_quote: Quote):
+    if old_quote.text in quotes:
+        index = quotes.index(old_quote.text)
+        quotes[index] = new_quote.text
+        return {"message": "Quote updated successfully!"}
+    return {"message": "Quote not found."}
