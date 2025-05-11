@@ -23,3 +23,12 @@ async def get_quote():
 @app.get("/quotes")
 async def get_all_quotes():
     return {"quotes": quotes}
+
+# Defining endpoint to add a new quote
+@app.post("/quote")
+async def add_quote(new_quote: Quote):
+    # Checking if teh quote already exits in the list
+    if new_quote.text in quotes:
+        return {"message": "Quote already exists."}
+    quotes.append(new_quote.text)
+    return {"message": "Quote added successfully!"}
